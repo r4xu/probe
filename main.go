@@ -54,6 +54,7 @@ func main() {
 }
 
 func run(output string, userAgent string, filtered, verbose bool) {
+	started := time.Now()
 	statuses := []status{}
 	httpClient := &http.Client{
 		Timeout: 10 * time.Second,
@@ -75,6 +76,9 @@ func run(output string, userAgent string, filtered, verbose bool) {
 
 	}
 	wg.Wait()
+	if verbose {
+		fmt.Printf("Completed in: %f2 secs\n", time.Since(started).Seconds())
+	}
 }
 
 type status struct {

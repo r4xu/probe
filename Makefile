@@ -7,17 +7,12 @@ VERSION=$(shell git describe --tags --always --long --dirty)
 build: windows linux darwin ## Build binaries
 	@echo version: $(VERSION)
 
-windows: $(WINDOWS) ## Build for Windows
+windows:
+	env GOOS=windows GOARCH=amd64 go build -i -v -o $(WINDOWS) -ldflags="-s -w -X main.version=$(VERSION)" .
 
-linux: $(LINUX) ## Build for Linux
+linux:
+	env GOOS=linux GOARCH=amd64 go build -i -v -o $(LINUX) -ldflags="-s -w -X main.version=$(VERSION)" .
 
-darwin: $(DARWIN) ## Build for Darwin (macOS) 
+darwin:
+	env GOOS=darwin GOARCH=amd64 go build -i -v -o $(DARWIN) -ldflags="-s -w -X main.version=$(VERSION)" .
 
-$(WINDOWS):
-	env GOOS=windows GOARCH=amd64 go build -i -v -o $(WINDOWS) -ldflags="-s -w -X main.version=$(VERSION)"  .
-
-$(LINUX):
-	env GOOS=linux GOARCH=amd64 go build -i -v -o $(LINUX) -ldflags="-s -w -X main.version=$(VERSION)"  .
-
-$(DARWIN):
-	env GOOS=darwin GOARCH=amd64 go build -i -v -o $(DARWIN) -ldflags="-s -w -X main.version=$(VERSION)"  .

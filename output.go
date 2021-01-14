@@ -10,14 +10,10 @@ import (
 
 func stdout(wg *sync.WaitGroup, filtered, verbose bool, ss []status) {
 	for _, s := range ss {
-		if verbose {
-			if filtered && s.status != doesNotExistStatus {
-				fmt.Println(fmt.Sprintf("[%d] %s", s.status, s.domain))
-			} else if !filtered {
-				fmt.Println(fmt.Sprintf("[%d] %s", s.status, s.domain))
-			}
-		} else {
-			fmt.Println(s.domain)
+		if filtered && s.status != doesNotExistStatus {
+			fmt.Println(fmt.Sprintf("[%d] %s", s.status, s.domain))
+		} else if !filtered {
+			fmt.Println(fmt.Sprintf("[%d] %s", s.status, s.domain))
 		}
 	}
 	wg.Done()
