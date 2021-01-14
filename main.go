@@ -13,14 +13,14 @@ import (
 )
 
 // Version is overwritten at build time.
-var Version = "0.0.0"
+var version = "0.0.0"
 
 const doesNotExistStatus int = 000
 
 func main() {
 	app := &cli.App{
 		Name:    "Probe",
-		Version: Version,
+		Version: version,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:  "output",
@@ -28,8 +28,8 @@ func main() {
 			},
 			&cli.StringFlag{
 				Name:  "user-agent",
-				Usage: "Custom user agent. Default 'healthy-crawler/{version}'.",
-				Value: fmt.Sprintf("healthy-crawler/%s", Version),
+				Usage: "Custom user agent. Default 'probe/{version}'.",
+				Value: fmt.Sprintf("probe/%s", version),
 			},
 			&cli.BoolFlag{
 				Name:  "filtered",

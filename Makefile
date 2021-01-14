@@ -2,7 +2,7 @@ EXECUTABLE=probe
 WINDOWS=$(EXECUTABLE)_windows_amd64.exe
 LINUX=$(EXECUTABLE)_linux_amd64
 DARWIN=$(EXECUTABLE)_darwin_amd64
-VERSION=$(shell git describe --tags --always --long --dirty)
+VERSION=$(shell git describe --tags --always --long)
 
 build: windows linux darwin ## Build binaries
 	@echo version: $(VERSION)
