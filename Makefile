@@ -11,7 +11,7 @@ windows: $(WINDOWS) ## Build for Windows
 
 linux: $(LINUX) ## Build for Linux
 
-darwin: $(DARWIN) ## Build for Darwin (macOS)
+darwin: $(DARWIN) ## Build for Darwin (macOS) 
 
 $(WINDOWS):
 	env GOOS=windows GOARCH=amd64 go build -i -v -o $(WINDOWS) -ldflags="-s -w -X main.version=$(VERSION)"  .
